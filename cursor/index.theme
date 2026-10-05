@@ -1,4 +1,4 @@
 [Icon Theme]
 Name=Bibata-Tokyo-Night
 Comment=Tokyo Night Theme Cursor.
-Inherits="hicolor"
+Inherits=Adwaita
