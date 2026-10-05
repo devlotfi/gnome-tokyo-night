@@ -9,7 +9,9 @@ echo "Building GNOME Shell theme..."
 mkdir -p "$SCRIPT_DIR/gnome-shell/build"
 
 # sassc overwrites OUT_FILE if it already exists, and creates it if not
-sassc -a "$SCRIPT_DIR/gnome-shell/theme/gnome-shell-dark.scss" "$SCRIPT_DIR/gnome-shell/build/gnome-shell.css"
+if command -v sassc >/dev/null; then
+    sassc -a "$SCRIPT_DIR/gnome-shell/theme/gnome-shell-dark.scss" "$SCRIPT_DIR/gnome-shell/build/gnome-shell.css"
+fi
 
 echo "Installing User GNOME Shell Theme..."
 
@@ -21,10 +23,6 @@ THEME_DIR="$SCRIPT_DIR/gnome-shell-user/build/$THEME_NAME"
 mkdir -p "$THEME_DIR/gnome-shell"
 
 cp "$SCRIPT_DIR/gnome-shell/build/gnome-shell.css" "$THEME_DIR/gnome-shell/gnome-shell.css"
-
-# sassc overwrites OUT_FILE if it already exists, and creates it if not
-sassc -a "$SCRIPT_DIR/gnome-shell/theme/gnome-shell-dark.scss" "$THEME_DIR/gnome-shell/gnome-shell.css"
-
 
 echo "Applying GNOME Shell theme..."
 
